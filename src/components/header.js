@@ -5,17 +5,23 @@ import { darkGrey, secondaryColor } from "../scss/theme";
 
 const Header = ({categories,handleCategoryClick}) => {
     const [activeCategory,setActiveCategory] = useState(null);
+
+    const handlePillClick = (id) => {
+        setActiveCategory(id);
+        handleCategoryClick(id);
+    }
+
     return(
         <HeaderContainer>
             <Typography variant="h4" gutterRight>
                 Roads & Compasses
             </Typography>
             <AllCategories>
-            <CategoryPill onClick={()=>handleCategoryClick(null)} active={activeCategory==null}>All</CategoryPill>
+            <CategoryPill onClick={()=>handlePillClick(null)} active={activeCategory==null}>All</CategoryPill>
             {
                 categories.map((category,index)=>{
                     return(
-                        <CategoryPill onClick={()=>handleCategoryClick(category.id)} active={category.id===activeCategory} key={index}>
+                        <CategoryPill onClick={()=>handlePillClick(category.id)} active={category.id===activeCategory} key={index}>
                             {category.name}
                         </CategoryPill>
                     )

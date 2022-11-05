@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [categories,setCategories] = useState([]);
   const [posts,setPosts] = useState([]);
+  const [openPost, setOpenPost] = useState(false);
 
   const getPosts = () => {
     axios.get(process.env.REACT_APP_BASE_URL + "/posts").then(res=>{
@@ -20,6 +21,7 @@ function App() {
   }
 
   const handleCategoryClick = (catId) => {
+    setOpenPost(false);
     if(catId==null){
       getPosts();
       return;
@@ -42,7 +44,7 @@ function App() {
       <Container>
         <Box sx={{ bgcolor: primaryColor, height: '100vh' }}>
           <Header categories={categories} handleCategoryClick={handleCategoryClick} />
-          <PostsView posts={posts} />
+          <PostsView posts={posts} openPost={openPost} setOpenPost={setOpenPost} />
         </Box>
       </Container>
     </div>
