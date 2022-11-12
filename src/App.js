@@ -13,6 +13,7 @@ function App() {
   const [categories,setCategories] = useState([]);
   const [posts,setPosts] = useState([]);
   const [openPost, setOpenPost] = useState(false);
+  const [activeCategory,setActiveCategory] = useState(null);
 
   const getPosts = () => {
     axios.get(process.env.REACT_APP_BASE_URL + "/posts").then(res=>{
@@ -43,8 +44,8 @@ function App() {
       <CssBaseline />
       <Container>
         <Box sx={{ bgcolor: primaryColor, height: '100vh' }}>
-          <Header categories={categories} handleCategoryClick={handleCategoryClick} />
-          <PostsView posts={posts} openPost={openPost} setOpenPost={setOpenPost} />
+          <Header setActiveCategory={setActiveCategory} activeCategory={activeCategory} categories={categories} handleCategoryClick={handleCategoryClick} />
+          <PostsView setActiveCategory={setActiveCategory} setPosts={setPosts} posts={posts} openPost={openPost} setOpenPost={setOpenPost} />
         </Box>
       </Container>
     </div>

@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.flex-end{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +47,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.MuiBox-root{
+  overflow: scroll;
 }
